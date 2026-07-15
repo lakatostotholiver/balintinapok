@@ -1,0 +1,145 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  border-bottom: var(--rule) solid transparent;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+/* Görgetés közben egy festékvonal választja el a tartalomtól — árnyék helyett. */
+.nav.is-lifted {
+  border-bottom-color: var(--ink);
+  background: var(--paper);
+}
+
+.nav__bar {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 10px var(--gut);
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+}
+
+.nav__mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex: none;
+}
+.nav__mark img {
+  width: 40px;
+  height: 40px;
+}
+.nav__wordmark {
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+}
+
+.nav__links {
+  display: flex;
+  gap: clamp(14px, 2.2vw, 34px);
+  margin-inline-start: auto;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  text-decoration: none;
+  padding-block: 6px;
+}
+/* Aláhúzás balról nő be — nincs elmozdulás, nincs árnyék. */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--olive);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav__num {
+  color: var(--olive);
+  font-size: 0.78em;
+}
+
+.nav__stamp {
+  flex: none;
+  border: 2px solid var(--ink);
+  padding: 5px 10px;
+  letter-spacing: 0.1em;
+}
+
+.nav__toggle {
+  display: none;
+  flex: none;
+  margin-inline-start: auto;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  letter-spacing: 0.12em;
+}
+
+/* ---- mobil ---- */
+@media (max-width: 900px) {
+  .nav__links,
+  .nav__stamp {
+    display: none;
+  }
+  .nav__toggle {
+    display: block;
+  }
+  .nav.is-lifted,
+  .nav {
+    background: var(--paper);
+  }
+}
+
+.nav__panel {
+  position: fixed;
+  inset: 61px 0 0 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(20px, 6vw, 40px) var(--gut) 40px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.nav__panel[hidden] {
+  display: none;
+}
+
+.nav__panelLink {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  text-decoration: none;
+  padding-block: clamp(14px, 3.6vw, 22px);
+  border-bottom: var(--rule) solid color-mix(in srgb, var(--paper) 28%, transparent);
+}
+.nav__panelLink .u-display {
+  font-size: clamp(1.9rem, 8.5vw, 3rem);
+}
+.nav__panelLink .nav__num {
+  color: var(--olive);
+}
+
+.nav__panelFoot {
+  margin-top: auto;
+  padding-top: 32px;
+  line-height: 1.9;
+  opacity: 0.75;
+}

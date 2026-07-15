@@ -1,0 +1,53 @@
+.ticker {
+  background: var(--ink);
+  color: var(--paper);
+  border-block: var(--rule) solid var(--ink-deep);
+  overflow: hidden;
+  padding-block: 13px;
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker-run 46s linear infinite;
+}
+
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 38px);
+  padding-inline-end: clamp(20px, 3vw, 38px);
+  white-space: nowrap;
+  letter-spacing: 0.18em;
+}
+
+.ticker__sprig {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--olive);
+}
+
+/* A sáv fele a duplikált tartalom, így -50%-nál pontosan visszaugrik. */
+@keyframes ticker-run {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ticker__item:nth-child(n + 6) {
+    display: none;
+  }
+}

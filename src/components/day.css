@@ -1,0 +1,271 @@
+.day {
+  position: relative;
+  padding-block: var(--step);
+  overflow: hidden;
+}
+
+.day--light {
+  background: var(--paper);
+  color: var(--ink);
+}
+/* A második nap megfordítja a lapot: zöld festék, papírszínű szöveg. */
+.day--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.day__texture {
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: min(90vw, 900px);
+  height: 100%;
+  color: var(--olive);
+  -webkit-mask-image: linear-gradient(105deg, #000 10%, transparent 72%);
+  mask-image: linear-gradient(105deg, #000 10%, transparent 72%);
+}
+
+.day__inner {
+  position: relative;
+}
+
+/* ---- fejléc ---- */
+.day__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(14px, 2.4vw, 32px);
+  padding-bottom: clamp(16px, 2.4vw, 26px);
+  border-bottom: var(--rule) solid currentColor;
+}
+
+/* A sorszám kontúrosan, margójegyzetként ül a cím mellett. */
+.day__index {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--olive);
+  line-height: 0.8;
+}
+
+.day__name {
+  font-size: clamp(2.1rem, 7.4vw, 6rem);
+}
+.day--dark .day__name {
+  color: var(--olive);
+}
+
+.day__tagline {
+  margin: 10px 0 0;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  opacity: 0.8;
+}
+
+.day__date {
+  text-align: right;
+  display: grid;
+  gap: 6px;
+  padding-top: 8px;
+}
+.day__weekday {
+  color: var(--olive);
+}
+
+.day__lead {
+  max-width: 62ch;
+  margin: clamp(20px, 3vw, 34px) 0 clamp(32px, 5vw, 60px);
+  font-size: clamp(1.05rem, 1rem + 0.45vw, 1.4rem);
+  line-height: 1.55;
+  opacity: 0.88;
+}
+
+/* ---- elrendezés ---- */
+.day__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 30vw, 400px);
+  gap: clamp(28px, 4vw, 72px);
+  align-items: start;
+}
+
+/* ---- menetrend ---- */
+.day__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, currentColor 26%, transparent);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: clamp(74px, 9vw, 118px) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: clamp(12px, 2vw, 28px);
+  padding-block: clamp(16px, 2.2vw, 24px);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 26%, transparent);
+  transition: background 0.22s ease, padding-inline 0.22s ease;
+}
+.row[tabindex] {
+  cursor: pointer;
+}
+/* Kiválasztott sor: a festék befut a sor mögé. */
+.row.is-active {
+  background: color-mix(in srgb, var(--olive) 20%, transparent);
+  padding-inline: clamp(8px, 1.2vw, 16px);
+}
+
+.row__time {
+  color: var(--olive);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.day--light .row__time {
+  color: color-mix(in srgb, var(--olive) 88%, var(--ink));
+}
+
+.row__main {
+  display: grid;
+  gap: 5px;
+}
+
+.row__title {
+  font-size: clamp(1.15rem, 2.5vw, 2rem);
+  line-height: 0.95;
+}
+
+.row__subtitle {
+  font-style: italic;
+  opacity: 0.78;
+  font-size: 0.98rem;
+}
+
+.row__note {
+  font-size: 0.92rem;
+  opacity: 0.62;
+  line-height: 1.5;
+  max-width: 54ch;
+}
+
+.row__peak {
+  align-self: center;
+  border: 2px solid var(--olive);
+  color: var(--olive);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.row__thumb {
+  display: none;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  align-self: center;
+}
+
+/* ---- NAP 01: napközbeni kínálat ---- */
+.allday {
+  position: sticky;
+  top: 92px;
+  background: var(--olive);
+  color: var(--chalk);
+  padding: clamp(20px, 2.6vw, 32px);
+}
+.allday__label {
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid color-mix(in srgb, var(--chalk) 45%, transparent);
+  opacity: 0.9;
+}
+.allday__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.allday__item {
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+/* ---- NAP 02: követő előnézet ---- */
+.preview {
+  position: sticky;
+  top: 92px;
+}
+.preview__frame {
+  border: var(--rule) solid var(--olive);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.preview__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.preview__caption {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+.preview__time {
+  color: var(--olive);
+}
+
+/* ---- mobil ---- */
+@media (max-width: 1000px) {
+  .day__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Asztali nézetben előnézet, mobilon bélyegkép a sorban. */
+  .preview {
+    display: none;
+  }
+  .row__thumb {
+    display: block;
+  }
+  .row {
+    grid-template-columns: clamp(70px, 18vw, 110px) minmax(0, 1fr) auto;
+  }
+  .row.is-active {
+    background: none;
+    padding-inline: 0;
+  }
+  .allday {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .day__head {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .day__date {
+    grid-column: 2;
+    text-align: left;
+    padding-top: 0;
+    display: flex;
+    gap: 8px;
+  }
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 6px;
+  }
+  .row__time {
+    grid-column: 1;
+  }
+  .row__main {
+    grid-column: 1;
+  }
+  .row__thumb {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 64px;
+    height: 64px;
+  }
+  .row__peak {
+    grid-column: 1;
+    justify-self: start;
+  }
+}

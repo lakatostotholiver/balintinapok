@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Törökbálinti Napok 2026
+   Vizuális rendszer: a logó 2×2-es csempéje a teljes oldal alapmodulja.
+   Nyomdai logika: papír alap, zöld festék, éles élek, vonalzók árnyék helyett.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/clash-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* A fix fejléc ne takarja el a horgonyra ugró szakaszcímeket. */
+:where(section[id]) {
+  scroll-margin-top: 72px;
+}
+
+:root {
+  /* A színek a hivatalos arculatból mintázva (logó + plakátok). */
+  --ink: #0d4b25;
+  --ink-deep: #073318;
+  --olive: #7e9529;
+  --paper: #fff3db;
+  --paper-2: #f6e8c9;
+  --chalk: #fff9ee;
+
+  --rule: 2px;
+  --gut: clamp(18px, 4.2vw, 72px);
+  --maxw: 1560px;
+
+  --step: clamp(56px, 9vw, 128px);
+
+  --font-display: 'Clash Display', 'Trebuchet MS', sans-serif;
+  --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  line-height: 1.6;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--olive);
+  color: var(--chalk);
+}
+
+:focus-visible {
+  outline: 3px solid var(--olive);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Tipográfiai alapok
+   -------------------------------------------------------------------------- */
+
+.u-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.84;
+  letter-spacing: -0.025em;
+  /* A Clash Display szóköze eleve keskeny, a negatív betűköz pedig tovább szűkíti;
+     e nélkül a nagy verzál címek egybeolvadnának ("ÜNNEPÉLYESMEGNYITÓ"). */
+  word-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+  /* Csak végszükség esetén törjön szót — a címsorok méretezése eleve kiférésre van hangolva. */
+  overflow-wrap: break-word;
+}
+
+/* Kisbetűs, ritkított jelölőszöveg — a nyomdai margójegyzetek szerepében. */
+.u-tag {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(0.62rem, 0.58rem + 0.16vw, 0.75rem);
+  letter-spacing: 0.16em;
+  /* A ritkítás már ad levegőt a szavak közé; a .u-display tág szóköze itt sok lenne. */
+  word-spacing: normal;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.u-shell {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
+
+/* Rozmaringos textúra: alfa-maszk, így bármilyen színre festhető. */
+.u-sprigs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: currentColor;
+  -webkit-mask-image: url('/brand/rosemary-mask.png');
+  mask-image: url('/brand/rosemary-mask.png');
+  -webkit-mask-size: clamp(420px, 46vw, 680px);
+  mask-size: clamp(420px, 46vw, 680px);
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+  opacity: 0.16;
+}
+
+/* Görgetésre finoman felúszó blokkok. Egyetlen, visszafogott mozgás az oldalon. */
+.u-rise {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.u-rise.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .u-rise {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.u-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--chalk);
+  padding: 12px 18px;
+}
+.u-skip:focus {
+  left: 8px;
+  top: 8px;
+}
+
+.u-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

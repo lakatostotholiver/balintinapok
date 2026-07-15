@@ -1,0 +1,221 @@
+.hero {
+  position: relative;
+  padding-top: clamp(88px, 12vh, 132px);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* A rozmaringmintát a jobb felső sarokba húzzuk, hogy a szöveg tiszta papíron maradjon. */
+.hero__texture {
+  position: absolute;
+  top: -8%;
+  right: -14%;
+  width: min(78vw, 940px);
+  height: 118%;
+  color: var(--olive);
+  transform: rotate(-4deg);
+  -webkit-mask-image: linear-gradient(255deg, #000 22%, transparent 78%);
+  mask-image: linear-gradient(255deg, #000 22%, transparent 78%);
+}
+
+.hero__inner {
+  position: relative;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0 var(--gut) clamp(36px, 6vw, 72px);
+}
+
+.hero__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 clamp(22px, 4vw, 40px);
+  padding-bottom: 12px;
+  border-bottom: var(--rule) solid var(--ink);
+}
+.hero__kickerDot {
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 8px);
+  opacity: 0.5;
+}
+
+/* Egyetlen vízszintes vonal fut végig a cím alatt, a függőleges a hasábokat választja el:
+   a két vonalzó keresztje adja a poszter szerkezetét. */
+.hero__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(230px, 22vw, 320px);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  border-top: var(--rule) solid var(--ink);
+}
+
+/* A "Törökbálinti" 7,49-szer olyan széles, mint a betűmérete (Clash Display Bold).
+   A 11,4vw és a 11,5rem plafon együtt garantálja, hogy 320px-től 1560px-ig egy sorban maradjon. */
+.hero__title {
+  font-size: clamp(2rem, 11.4vw, 11.5rem);
+  margin-bottom: clamp(22px, 3.4vw, 40px);
+}
+/* A "Napok" olívazöld — a plakát színváltásának logikája. */
+.hero__titleAccent {
+  color: var(--olive);
+}
+
+.hero__when {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(8px, 1.4vw, 18px);
+  margin: 0;
+  padding-top: clamp(18px, 2.6vw, 30px);
+}
+.hero__day {
+  font-size: clamp(2.6rem, 8.4vw, 6.4rem);
+  line-height: 0.78;
+}
+.hero__dash {
+  font-size: clamp(2rem, 6vw, 4.4rem);
+  line-height: 0.9;
+  color: var(--olive);
+}
+.hero__month {
+  padding-bottom: 0.35em;
+  line-height: 1.55;
+  border-left: 2px solid var(--olive);
+  padding-left: clamp(10px, 1.4vw, 16px);
+  margin-left: clamp(4px, 1vw, 12px);
+}
+
+/* ---- jobb sáv ---- */
+.hero__rail {
+  padding-left: clamp(16px, 2vw, 28px);
+  border-left: var(--rule) solid var(--ink);
+  padding-top: clamp(18px, 2.6vw, 30px);
+}
+
+.hero__meta {
+  margin: 0;
+}
+.hero__meta dt {
+  color: var(--olive);
+  margin-bottom: 6px;
+}
+.hero__meta dd {
+  margin: 0 0 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 26%, transparent);
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+.hero__meta dd:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 24px;
+}
+.hero__metaFaint {
+  font-size: 0.86em;
+  opacity: 0.62;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background 0.22s ease;
+}
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  background: var(--olive);
+}
+.hero__ctaArrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.hero__cta:hover .hero__ctaArrow {
+  transform: translateX(5px);
+}
+
+/* ---- két nap = két csempe ---- */
+.hero__split {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero__tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(20px, 3.2vw, 40px) clamp(18px, 3vw, 40px);
+  text-decoration: none;
+  min-height: clamp(140px, 15vw, 200px);
+  justify-content: space-between;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.hero__tile--light {
+  background: var(--olive);
+  color: var(--chalk);
+}
+.hero__tile--dark {
+  background: var(--ink);
+  color: var(--chalk);
+}
+/* Hoverre a két csempe színt cserél — a sakktábla megfordul. */
+.hero__tile--light:hover,
+.hero__tile--light:focus-visible {
+  background: var(--ink);
+}
+.hero__tile--dark:hover,
+.hero__tile--dark:focus-visible {
+  background: var(--olive);
+}
+
+.hero__tileNum {
+  opacity: 0.72;
+}
+.hero__tileName {
+  font-size: clamp(1.4rem, 3.4vw, 2.9rem);
+}
+.hero__tileDate {
+  display: flex;
+  gap: 8px;
+  opacity: 0.85;
+}
+.hero__tileWd {
+  opacity: 0.6;
+}
+
+/* ---- mobil ---- */
+@media (max-width: 900px) {
+  .hero__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(26px, 6vw, 36px);
+  }
+  .hero__rail {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 24px;
+    border-top: var(--rule) solid var(--ink);
+  }
+  .hero__meta dd {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+  }
+  .hero__texture {
+    right: -30%;
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero__split {
+    grid-template-columns: 1fr;
+  }
+  .hero__when {
+    flex-wrap: wrap;
+  }
+}

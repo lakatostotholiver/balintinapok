@@ -1,0 +1,111 @@
+// A rendezvény teljes tartalma. A szövegek a hivatalos programfüzetből származnak,
+// a képek a Rozmaring fesztivál közösségi médiás kártyáiról.
+
+export const EVENT = {
+  title: 'Törökbálinti Napok',
+  year: 2026,
+  dates: '2026. augusztus 29–30.',
+  venue: 'Városháza mögötti parkoló',
+  address: '2045 Törökbálint, Munkácsy Mihály u. 79.',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=T%C3%B6r%C3%B6kb%C3%A1lint+V%C3%A1rosh%C3%A1za%2C+Munk%C3%A1csy+Mih%C3%A1ly+u.+79',
+  organiser: 'Törökbálint Város Önkormányzata',
+  organiserUrl: 'https://www.torokbalint.hu',
+  // A megnyitó időpontja — a visszaszámláló ehhez igazodik.
+  startsAt: '2026-08-29T14:00:00+02:00',
+}
+
+export const DAYS = [
+  {
+    id: 'ertek-ter',
+    index: '01',
+    name: 'Érték-tér',
+    date: '2026-08-29',
+    dateLabel: 'Augusztus 29.',
+    weekday: 'szombat',
+    lead: 'A városháza mögötti tér egy napra a törökbálinti értékek színpadává alakul — bábszínház, gólyalábasok és swing az esti fényekben.',
+    tone: 'light',
+    schedule: [
+      { time: '14:00', title: 'Ünnepélyes megnyitó' },
+      {
+        time: '16:00',
+        title: 'Álomzug Társulás bábelőadása',
+        subtitle: 'Kocsonyakirályfi',
+        note: 'Jóízű bábos mese 7 fejezetben — nem csak gyerekeknek.',
+      },
+      { time: '17:00', title: 'Álomvándorok Társasága', subtitle: 'zenés előadás' },
+      { time: '18:00', title: 'Gólyalábas bemutató' },
+      {
+        time: '19:30',
+        title: 'Minden jó, ha swing a vége',
+        subtitle: 'Swing a La Django zenekar',
+        note: 'Közreműködik: Szőke Nikoletta.',
+        peak: true,
+      },
+    ],
+    allDay: {
+      label: 'A nap folyamán',
+      items: [
+        'Népi játszótér',
+        'Fotópont',
+        'Kézművesek utcája, vásár és foglalkoztató',
+        'Kackiás verklis',
+        'Élő történelem',
+        'Olvasószalon',
+        'Értéktári előadások, programok és kiállítás',
+      ],
+    },
+  },
+  {
+    id: 'rozmaring',
+    index: '02',
+    name: 'Rozmaring fesztivál',
+    date: '2026-08-30',
+    dateLabel: 'Augusztus 30.',
+    weekday: 'vasárnap',
+    tagline: 'Rozmaring, ami összeköt',
+    lead: 'Fanfárral nyit, fúvószenével zár. Közte gyerekkoncert, főzőverseny és egy ünnepélyes rozmaringültetés, ami évek óta összeköti a térség településeit.',
+    tone: 'dark',
+    schedule: [
+      { time: '10:30', title: 'Fanfár és megnyitó', image: 'fb-02' },
+      { time: '11:00', title: 'Alma Zenekar', subtitle: 'gyerekkoncert', image: 'fb-01' },
+      { time: '12:00 – 13:30', title: 'Művészeti csoportok bemutatói', image: 'fb-04' },
+      {
+        time: '13:30',
+        title: 'Ünnepélyes rozmaringültetés',
+        note: 'Szép kertek pályázat díjátadása és a főzőverseny eredményhirdetése.',
+        image: 'fb-03',
+      },
+      {
+        time: '15:00 – 18:00',
+        title: 'II. Troll János Fúvószenei Találkozó',
+        note: 'Közreműködik a Budaörsi Fúvószenekar, a Budakeszi Hagyományőrző Fúvószenekar, a Keil Ernő Zenekar és a Grossturwaller Musikanten. Vezényel: Deák András karmester.',
+        image: 'fb-06',
+        peak: true,
+      },
+      {
+        time: '18:00 – 20:00',
+        title: 'Örömzene',
+        subtitle: 'világslágerek meghívott fúvószenekarok előadásában',
+        image: 'fb-05',
+        peak: true,
+      },
+    ],
+    allDay: {
+      label: 'A nap folyamán — fókuszban a rozmaring',
+      grid: [
+        { title: 'Főzőverseny', note: 'Térségi vendégeink hagyományos receptjei', time: '10:00 – 13:00', image: 'fb-08' },
+        { title: 'Fotófal', time: '11:00 – 18:00', image: 'fb-07' },
+        { title: 'Kalandpark', time: '11:00 – 18:00', image: 'fb-17' },
+        { title: 'Kosaras körhinta', time: '11:00 – 18:00', image: 'fb-09' },
+        { title: 'Óriásjenga', time: '11:00 – 18:00', image: 'fb-10' },
+        { title: 'Szalmás ugráló', time: '11:00 – 18:00', image: 'fb-18' },
+        { title: 'Sörivóverseny', time: '18:00', image: 'fb-11' },
+        { title: 'Kézműves foglalkoztatók', time: '11:00 – 18:00', image: 'fb-12' },
+        { title: 'Közös fesztiválalkotás', time: '11:00 – 18:00', image: 'fb-13' },
+        { title: 'Cianotípia', time: '11:00 – 18:00', image: 'fb-14' },
+        { title: 'Vásár', time: '11:00 – 18:00', image: 'fb-15' },
+        { title: 'Rozmaringos kert fotópályázat', image: 'fb-19' },
+      ],
+    },
+  },
+]

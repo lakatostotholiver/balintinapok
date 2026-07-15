@@ -1,0 +1,122 @@
+.info {
+  background: var(--paper-2);
+  color: var(--ink);
+  padding-block: var(--step);
+  border-top: var(--rule) solid var(--ink);
+}
+
+.info__head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(14px, 2.4vw, 32px);
+  padding-bottom: clamp(16px, 2.4vw, 26px);
+  border-bottom: var(--rule) solid var(--ink);
+  margin-bottom: clamp(28px, 4vw, 52px);
+}
+.info__index {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--olive);
+  line-height: 0.8;
+}
+.info__title {
+  font-size: clamp(2.1rem, 7.4vw, 6rem);
+}
+
+.info__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 3.4vw, 56px);
+}
+
+.info__block {
+  padding-left: clamp(14px, 1.8vw, 24px);
+  border-left: var(--rule) solid var(--ink);
+}
+
+.info__label {
+  margin: 0 0 16px;
+  color: var(--olive);
+}
+
+.info__venue {
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  margin: 0 0 8px;
+}
+
+.info__addr {
+  margin: 0 0 18px;
+  opacity: 0.72;
+}
+
+.info__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-bottom: 2px solid var(--olive);
+  padding-bottom: 3px;
+  transition: color 0.2s ease;
+}
+.info__link svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.26s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.info__link:hover {
+  color: var(--olive);
+}
+.info__link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.info__when {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 22px;
+}
+.info__when li {
+  display: grid;
+  gap: 4px;
+}
+.info__when .u-tag {
+  color: var(--olive);
+}
+.info__whenMain {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+.info__whenSub {
+  font-style: italic;
+  opacity: 0.66;
+  font-size: 0.94rem;
+}
+
+.info__org {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.2;
+}
+
+.info__disclaimer {
+  margin: 24px 0 0;
+  font-size: 0.84rem;
+  opacity: 0.5;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .info__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
