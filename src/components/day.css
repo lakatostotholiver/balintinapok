@@ -49,6 +49,9 @@
 
 .day__name {
   font-size: clamp(2.1rem, 7.4vw, 6rem);
+  /* A .u-display 0.84-es sormagassága a hosszú, ékezetes címeknél (pl. „Bálinti
+     Közösségi Mozi") több sorra tördelve összeakasztotta az ékezeteket — itt lazítunk. */
+  line-height: 0.92;
 }
 .day--dark .day__name {
   color: var(--olive);
@@ -59,6 +62,17 @@
   font-style: italic;
   font-size: clamp(1rem, 2vw, 1.35rem);
   opacity: 0.8;
+}
+
+/* Napra szabott helyszín-jelölő (a pénteki mozi a Nádas-tónál külön helyszín). */
+.day__venue {
+  display: inline-flex;
+  align-items: center;
+  margin: 14px 0 0;
+  padding: 5px 11px;
+  border: 2px solid var(--olive);
+  color: var(--olive);
+  letter-spacing: 0.12em;
 }
 
 .day__date {
@@ -85,6 +99,13 @@
   grid-template-columns: minmax(0, 1fr) clamp(260px, 30vw, 400px);
   gap: clamp(28px, 4vw, 72px);
   align-items: start;
+}
+
+/* Ha nincs jobb hasáb (pl. a mozi napnak nincs napközbeni kínálata), a menetrend
+   egy szélesebb, olvasható hasábban fut — nem hagyunk üres oszlopot. */
+.day__grid--solo {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 60ch;
 }
 
 /* ---- menetrend ---- */

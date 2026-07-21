@@ -139,11 +139,15 @@
   transform: translateX(5px);
 }
 
-/* ---- két nap = két csempe ---- */
+/* ---- három nap = három csempe ---- */
 .hero__split {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+}
+/* Két szomszédos olívazöld csempe közé vékony festékvonal, hogy elváljanak. */
+.hero__tile + .hero__tile {
+  box-shadow: inset 1px 0 0 color-mix(in srgb, var(--chalk) 34%, transparent);
 }
 
 .hero__tile {
@@ -211,10 +215,16 @@
   }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 860px) {
   .hero__split {
     grid-template-columns: 1fr;
   }
+  .hero__tile + .hero__tile {
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--chalk) 34%, transparent);
+  }
+}
+
+@media (max-width: 620px) {
   .hero__when {
     flex-wrap: wrap;
   }

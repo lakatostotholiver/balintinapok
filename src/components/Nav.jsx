@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import './nav.css'
 
 const LINKS = [
-  { id: 'ertek-ter', label: 'Érték-tér', num: '01' },
-  { id: 'rozmaring', label: 'Rozmaring fesztivál', num: '02' },
-  { id: 'helyszin', label: 'Helyszín', num: '03' },
+  { id: 'mozi', label: 'Közösségi mozi', num: '01' },
+  { id: 'ertek-ter', label: 'Érték-tér', num: '02' },
+  { id: 'rozmaring', label: 'Rozmaring fesztivál', num: '03' },
+  { id: 'helyszin', label: 'Helyszín', num: '04' },
+  { id: 'gyik', label: 'GYIK', num: '05' },
 ]
 
 export default function Nav() {
@@ -54,9 +56,12 @@ export default function Nav() {
           ))}
         </nav>
 
-        <span className="nav__stamp u-tag" aria-hidden="true">
-          Aug 29–30.
-        </span>
+        <a className="nav__pdf u-tag" href="/programfuzet.pdf" target="_blank" rel="noopener noreferrer">
+          Programfüzet
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" strokeWidth="2.2" />
+          </svg>
+        </a>
 
         <button
           className="nav__toggle u-tag"
@@ -80,10 +85,20 @@ export default function Nav() {
             <span className="u-display">{l.label}</span>
           </a>
         ))}
+        <a
+          className="nav__panelLink nav__panelPdf"
+          href="/programfuzet.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+        >
+          <span className="u-tag nav__num">↓</span>
+          <span className="u-display">Programfüzet (PDF)</span>
+        </a>
         <p className="nav__panelFoot u-tag">
-          Városháza mögötti parkoló
+          Városháza mögötti parkoló · Nádas-tó
           <br />
-          2026. augusztus 29–30.
+          2026. augusztus 28–30.
         </p>
       </div>
     </header>

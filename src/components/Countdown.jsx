@@ -26,7 +26,7 @@ export default function Countdown() {
 
   // A rendezvény alatt / után a visszaszámláló helyét egy állapotsor veszi át.
   if (!left) {
-    const over = Date.now() > new Date('2026-08-30T20:00:00+02:00').getTime()
+    const over = Date.now() > new Date(EVENT.endsAt).getTime()
     return (
       <section className="cd cd--done">
         <p className="cd__done u-display">{over ? 'Köszönjük, hogy velünk tartottatok.' : 'Most zajlik — gyertek!'}</p>
@@ -35,8 +35,8 @@ export default function Countdown() {
   }
 
   return (
-    <section className="cd" aria-label="Visszaszámlálás a megnyitóig">
-      <p className="cd__label u-tag">A megnyitóig</p>
+    <section className="cd" aria-label="Visszaszámlálás a kezdésig">
+      <p className="cd__label u-tag">A kezdésig</p>
 
       <ol className="cd__row">
         {Object.entries(left).map(([unit, value]) => (
@@ -47,7 +47,7 @@ export default function Countdown() {
         ))}
       </ol>
 
-      <p className="cd__note u-tag">2026. 08. 29. — 14:00</p>
+      <p className="cd__note u-tag">2026. 08. 28. — 17:00 · Nádas-tó</p>
     </section>
   )
 }

@@ -1,11 +1,11 @@
 import './ticker.css'
 
 const PHRASES = [
-  'Augusztus 29–30.',
-  'Városháza mögötti parkoló',
+  'Augusztus 28–30.',
+  'Mozi a Nádas-tónál',
   'Érték-tér',
   'Rozmaring, ami összeköt',
-  'Két nap, egy város',
+  'Három nap, egy város',
 ]
 
 export default function Ticker() {

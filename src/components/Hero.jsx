@@ -23,7 +23,7 @@ export default function Hero() {
 
         <div className="hero__body">
           <p className="hero__when">
-            <span className="hero__day u-display">29</span>
+            <span className="hero__day u-display">28</span>
             <span className="hero__dash u-display" aria-hidden="true">
               –
             </span>
@@ -31,28 +31,30 @@ export default function Hero() {
             <span className="hero__month u-tag">
               Augusztus
               <br />
-              Szombat — vasárnap
+              Péntek — vasárnap
             </span>
           </p>
 
           <aside className="hero__rail">
             <dl className="hero__meta">
-              <dt className="u-tag">Helyszín</dt>
+              <dt className="u-tag">Helyszínek</dt>
               <dd>
                 {EVENT.venue}
                 <br />
-                <span className="hero__metaFaint">{EVENT.address}</span>
+                <span className="hero__metaFaint">Pénteken: {EVENT.venue2}</span>
               </dd>
 
-              <dt className="u-tag">Két nap, két arc</dt>
+              <dt className="u-tag">Három nap, három arc</dt>
               <dd>
+                Bálinti Közösségi Mozi
+                <br />
                 Érték-tér
                 <br />
                 Rozmaring fesztivál
               </dd>
             </dl>
 
-            <a className="hero__cta" href="#ertek-ter">
+            <a className="hero__cta" href="#program">
               <span className="u-tag">Programok</span>
               <svg viewBox="0 0 24 24" aria-hidden="true" className="hero__ctaArrow">
                 <path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.5" />
@@ -67,7 +69,7 @@ export default function Hero() {
         {DAYS.map((day) => (
           <a key={day.id} className={`hero__tile hero__tile--${day.tone}`} href={`#${day.id}`}>
             <span className="hero__tileNum u-tag">{day.index}</span>
-            <span className="hero__tileName u-display">{day.name}</span>
+            <span className="hero__tileName u-display">{day.short ?? day.name}</span>
             <span className="hero__tileDate u-tag">
               {day.dateLabel} <span className="hero__tileWd">{day.weekday}</span>
             </span>

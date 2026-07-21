@@ -74,11 +74,25 @@
   font-size: 0.78em;
 }
 
-.nav__stamp {
+.nav__pdf {
   flex: none;
-  border: 2px solid var(--ink);
-  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 7px 12px;
   letter-spacing: 0.1em;
+  transition: background 0.22s ease;
+}
+.nav__pdf:hover,
+.nav__pdf:focus-visible {
+  background: var(--olive);
+}
+.nav__pdf svg {
+  width: 15px;
+  height: 15px;
 }
 
 .nav__toggle {
@@ -96,7 +110,7 @@
 /* ---- mobil ---- */
 @media (max-width: 900px) {
   .nav__links,
-  .nav__stamp {
+  .nav__pdf {
     display: none;
   }
   .nav__toggle {
@@ -134,6 +148,10 @@
   font-size: clamp(1.9rem, 8.5vw, 3rem);
 }
 .nav__panelLink .nav__num {
+  color: var(--olive);
+}
+
+.nav__panelPdf .u-display {
   color: var(--olive);
 }
 

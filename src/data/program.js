@@ -4,20 +4,71 @@
 export const EVENT = {
   title: 'Törökbálinti Napok',
   year: 2026,
-  dates: '2026. augusztus 29–30.',
+  dates: '2026. augusztus 28–30.',
+  datesShort: 'Aug 28–30.',
   venue: 'Városháza mögötti parkoló',
   address: '2045 Törökbálint, Munkácsy Mihály u. 79.',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=T%C3%B6r%C3%B6kb%C3%A1lint+V%C3%A1rosh%C3%A1za%2C+Munk%C3%A1csy+Mih%C3%A1ly+u.+79',
+  // A pénteki mozi külön helyszínen, a Nádas-tó partján.
+  venue2: 'Nádas-tó',
+  maps2Url: 'https://www.google.com/maps/search/?api=1&query=T%C3%B6r%C3%B6kb%C3%A1lint+N%C3%A1das-t%C3%B3',
   organiser: 'Törökbálint Város Önkormányzata',
   organiserUrl: 'https://www.torokbalint.hu',
-  // A megnyitó időpontja — a visszaszámláló ehhez igazodik.
-  startsAt: '2026-08-29T14:00:00+02:00',
+  // Hivatalos elérhetőségek a torokbalint.hu-ról — a lábléchez.
+  office: {
+    name: 'Törökbálint Város Önkormányzata',
+    dept: 'Polgármesteri Hivatal',
+    postal: '2045 Törökbálint, Munkácsy Mihály utca 79.',
+    phone: '+36 23 335 021',
+    phoneHref: 'tel:+3623335021',
+    web: 'torokbalint.hu',
+    hours: [
+      { day: 'Hétfő', time: '13:00 – 18:00' },
+      { day: 'Szerda', time: '08:00 – 12:00, 13:00 – 16:00' },
+    ],
+  },
+  // A rendezvény első programpontja — a visszaszámláló ehhez igazodik.
+  startsAt: '2026-08-28T17:00:00+02:00',
+  endsAt: '2026-08-30T20:00:00+02:00',
 }
 
 export const DAYS = [
   {
-    id: 'ertek-ter',
+    id: 'mozi',
     index: '01',
+    name: 'Bálinti Közösségi Mozi',
+    short: 'Közösségi mozi',
+    date: '2026-08-28',
+    dateLabel: 'Augusztus 28.',
+    weekday: 'péntek',
+    venue: 'Nádas-tó',
+    tagline: 'Mozi a Nádas-tónál',
+    lead: 'A Törökbálinti Napok pénteken a Nádas-tó partján indul: két nagyvászonra kivetített film, csillagos ég alatt. A vetítések között kerül sor a Szépkertek Pályázat díjátadójára.',
+    tone: 'light',
+    schedule: [
+      {
+        time: '17:00',
+        title: 'Zootopia 2',
+        subtitle: 'közösségi mozi',
+        note: 'Az egész családnak szóló nyitófilm a tóparton.',
+      },
+      {
+        time: 'Filmek között',
+        title: 'Szépkertek Pályázat díjátadó',
+        note: 'A két film között a Szépkertek Pályázat díjátadójára kerül sor.',
+        peak: true,
+      },
+      {
+        time: '20:00',
+        title: 'Made in Hungária',
+        subtitle: 'közösségi mozi',
+        note: 'Esti nagyvásznas vetítés a Nádas-tó partján.',
+      },
+    ],
+  },
+  {
+    id: 'ertek-ter',
+    index: '02',
     name: 'Érték-tér',
     date: '2026-08-29',
     dateLabel: 'Augusztus 29.',
@@ -57,7 +108,7 @@ export const DAYS = [
   },
   {
     id: 'rozmaring',
-    index: '02',
+    index: '03',
     name: 'Rozmaring fesztivál',
     date: '2026-08-30',
     dateLabel: 'Augusztus 30.',

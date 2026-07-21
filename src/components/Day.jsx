@@ -51,6 +51,7 @@ export default function Day({ day }) {
           <div className="day__headMain">
             <h2 className="day__name u-display">{day.name}</h2>
             {day.tagline && <p className="day__tagline">„{day.tagline}”</p>}
+            {day.venue && <p className="day__venue u-tag">Helyszín · {day.venue}</p>}
           </div>
 
           <p className="day__date u-tag">
@@ -61,7 +62,11 @@ export default function Day({ day }) {
 
         <p className="day__lead u-rise">{day.lead}</p>
 
-        <div className={`day__grid ${day.tone === 'dark' ? 'day__grid--preview' : ''}`}>
+        <div
+          className={`day__grid ${day.tone === 'dark' ? 'day__grid--preview' : ''} ${
+            !day.allDay ? 'day__grid--solo' : ''
+          }`}
+        >
           <ol className="day__list u-rise">
             {day.schedule.map((item) => (
               <Row
@@ -74,7 +79,7 @@ export default function Day({ day }) {
           </ol>
 
           {/* NAP 01 — a napközbeni kínálat a jobb hasábban fut, olívazöld tömbben. */}
-          {day.allDay.items && (
+          {day.allDay?.items && (
             <aside className="allday u-rise">
               <h3 className="allday__label u-tag">{day.allDay.label}</h3>
               <ul className="allday__list">
@@ -101,7 +106,7 @@ export default function Day({ day }) {
           )}
         </div>
 
-        {day.allDay.grid && <TileGrid label={day.allDay.label} items={day.allDay.grid} />}
+        {day.allDay?.grid && <TileGrid label={day.allDay.label} items={day.allDay.grid} />}
       </div>
     </section>
   )

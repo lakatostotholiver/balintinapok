@@ -43,16 +43,34 @@
   font-size: clamp(1.25rem, 2.4vw, 1.9rem);
   margin: 0 0 8px;
 }
+.info__venue--second {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+}
 
 .info__addr {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   opacity: 0.72;
 }
 
+.info__venueNote {
+  margin: 0 0 14px;
+  color: var(--olive);
+}
+
+.info__orgSub {
+  margin: 2px 0 14px;
+  opacity: 0.66;
+}
+
 .info__link {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   gap: 8px;
+  margin-bottom: 14px;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 0.92rem;
