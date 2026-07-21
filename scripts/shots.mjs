@@ -1,7 +1,10 @@
 import { chromium } from 'playwright'
+import { mkdirSync } from 'fs'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
-const OUT =
-  'C:/Users/OLIVER~1/AppData/Local/Temp/claude/f--Programoz-s2-0-B-linti-Napok/f962d3c9-e40b-4168-ab72-9bbc2e49d641/scratchpad/shots'
+const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'screenshots')
+mkdirSync(OUT, { recursive: true })
 const URL = process.env.URL || 'http://localhost:4173/'
 
 const browser = await chromium.launch()
